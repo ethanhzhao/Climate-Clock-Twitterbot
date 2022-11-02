@@ -13,8 +13,8 @@ function tweet(){
     var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));  
     var seconds = ((t % (1000 * 60)) / 1000);
-    var timeLeft = "There is " + days + " days and " + hours + " hours and " + minutes + " minutes and " + seconds + " seconds from complete environmental destruction.";
-	var extraInfo = "\n- - -\nA warming of 1.5 degrees celcius will likely result in large-scale drought, famine, loss of entire ecosystems/habitable land, and many more devastating global impacts. Learn more below.\n#climateclock"
+    var timeLeft = "There are " + days + " days and " + hours + " hours and " + minutes + " minutes and " + seconds + " seconds from complete environmental destruction.";
+	var extraInfo = "\n-\nThe warming of 1.5 degrees C will likely cause large-scale drought, famine, loss of entire ecosystems/habitable land, and many other devastating events. #climateclock"
     T.post('statuses/update', { status: timeLeft + extraInfo }, function (error, response) {
         if (response) {
             console.log('Success! Tweet posted.');
@@ -27,5 +27,24 @@ function tweet(){
  
 }
 
+// var stream = T.stream('statuses/filter', { track: '@<EnvironmentalCD>'});
+// stream.on('tweet', tweetEvent);
+ 
+// function tweetEvent() {
+//     console.log("Follow event!");
+//     T.post('statuses/update', "This is a response", function (error, response) {
+//         if (response) {
+//             console.log('Success');
+//         }
+//         if (error) {
+//             console.log('error', error);
+//         }
+//     })
+// }
+
+
 tweet();
 setInterval(tweet, 1000 * 60 * 60);
+
+
+

@@ -4,38 +4,28 @@ var Twit = require('twit');
 // We need to include our configuration file
 var T = new Twit(require('./config.js'));
 
-// This is the URL of a search for the latest tweets on the '#mediaarts' hashtag.
-var mediaArtsSearch = {q: "#mediaarts", count: 10, result_type: "recent"}; 
-
-// This function finds the latest tweet with the #mediaarts hashtag, and retweets it.
-function retweetLatest() {
-	T.get('search/tweets', mediaArtsSearch, function (error, data) {
-	  // log out any errors and responses
-	  console.log(error, data);
-	  // If our search request to the server had no errors...
-	  if (!error) {
-	  	// ...then we grab the ID of the tweet we want to retweet...
-		var retweetId = data.statuses[0].id_str;
-		// ...and then we tell Twitter we want to retweet it!
-		T.post('statuses/retweet/' + retweetId, { }, function (error, response) {
-			if (response) {
-				console.log('Success! Check your bot, it should have retweeted something.')
-			}
-			// If there was an error with our Twitter call, we print it out here.
-			if (error) {
-				console.log('There was an error with Twitter:', error);
-			}
-		})
-	  }
-	  // However, if our original search request had an error, we want to print it out here.
-	  else {
-	  	console.log('There was an error with your hashtag search:', error);
-	  }
-	});
+function tweet(){
+    //time left to limit global warming to 1.5 deg C date is 07/2029 based on https://climateclock.world/
+    var deadline = new Date("jul 22, 2029 11:59").getTime();
+    var now = new Date().getTime();
+    var t = deadline - now;
+    var days = Math.floor(t / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));  
+    var seconds = ((t % (1000 * 60)) / 1000);
+    var timeLeft = "There is " + days + " days and " + hours + " hours and " + minutes + " minutes and " + seconds + " seconds from complete environmental destruction.";
+	var extraInfo = "\n- - -\nA warming of 1.5 degrees celcius will likely result in large-scale drought, famine, loss of entire ecosystems/habitable land, and many more devastating global impacts. Learn more below.\n#climateclock"
+    T.post('statuses/update', { status: timeLeft + extraInfo }, function (error, response) {
+        if (response) {
+            console.log('Success! Tweet posted.');
+        }
+        if (error) {
+            console.log('Error: ', error);
+        }
+    })
+	
+ 
 }
 
-// Try to retweet something as soon as we run the program...
-retweetLatest();
-// ...and then every hour after that. Time here is in milliseconds, so
-// 1000 ms = 1 second, 1 sec * 60 = 1 min, 1 min * 60 = 1 hour --> 1000 * 60 * 60
-setInterval(retweetLatest, 1000 * 60 * 60);
+tweet();
+setInterval(tweet, 1000 * 60 * 60);

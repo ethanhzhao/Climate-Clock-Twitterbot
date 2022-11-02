@@ -1,8 +1,8 @@
 // Put your own Twitter App keys here. See README.md for more detail.
 module.exports = {
-  consumer_key:         'Kc6tLIBCGA6mi0AszFCuipK1S',
-  consumer_secret:      'nioEmwhYJLyTLeGzsszVzUTNRY5uMFFcbjX71incPtKcFi4Oxd',
-  access_token:         '1586548846846304256-er3IeaQaJV8TsbF9Ebgiv5OfD0kOSZ',
-  access_token_secret:  '8jTiKP5fT2I7Lyy9MIQlGwuTG6AUoKmYzX5xHvXXlibfs'
+  consumer_key:         'lH6VPTJkxQ5JmsSE1YETKEp2J',
+  consumer_secret:      '3qA1G2eFuJd87MoioQJj2f7isO4PBSAHot09sFiRSKNO9dELBl',
+  access_token:         '1586929280306380800-1PJXo89bdVByO8DmvxqTXF82sRrfM0',
+  access_token_secret:  'tKx7aXAwTM1QvE9rTHWbWOFr0cZ6y0SDZ1RdXCQDem4zD'
 }
-// @LMC2700_F22 twit acc
+// @lmc2700tbot twit acc

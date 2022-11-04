@@ -43,9 +43,9 @@ function tweet(){
 //This function will retweet the most recent tweet on #EnvironmentalImpact
 function retweet() {
     T.get('search/tweets', environmentalImpactSearch, function(error, data) {
-     // log out any errors and responses
-     console.log(error, data);
-     // If our search request to the server had no errors
+    // log out any errors and responses
+    console.log(error, data);
+    // If our search request to the server had no errors
     if (!error) {
         //then we grab the ID of the tweet we want to retweet
         var retweetId = data.statuses[0].id_str;
@@ -70,7 +70,7 @@ function retweet() {
 
 //this function will reply to the same most recent retweeted post on #EnvironmentalJustice
 function reply(){
-    //gets the most recent post on #EnvironmentalJustic
+    //gets the most recent post on #EnvironmentalImpact
     T.get('search/tweets', environmentalImpactSearch, function(error, data){
         console.log(error, data);
         // If our search request to the server had no errors
